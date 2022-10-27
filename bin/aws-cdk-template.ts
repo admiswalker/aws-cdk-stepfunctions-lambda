@@ -5,6 +5,7 @@ import { AwsCdkTemplateStack } from '../lib/aws-cdk-template-stack';
 import { VpcStack } from '../lib/vpc-stack';
 //import { SsmStack } from '../lib/ssm-stack';
 //import { Ec2Stack } from '../lib/ec2-stack';
+import { LambdaStack } from '../lib/lambda/lambda-stack';
 
 
 const app = new cdk.App();
@@ -16,11 +17,17 @@ const env = {
 }
 
 new AwsCdkTemplateStack(app, 'AwsCdkTemplateStack', {});
-
+/*
 const vpc_stack = new VpcStack(app, prj_name+'-VpcStack', {
   prj_name: prj_name,
   env: env,
 });
+*/
+const lambda_stack = new LambdaStack(app, prj_name+'-LambdaStack', {
+  prj_name: prj_name,
+  env: env,
+});
+
 /*
 const ssm_stack = new SsmStack(app, prj_name+'-SsmStack', {
   prj_name: prj_name,
