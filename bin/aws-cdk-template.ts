@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { AwsCdkTemplateStack } from '../lib/aws-cdk-template-stack';
-import { VpcStack } from '../lib/vpc-stack';
-//import { SsmStack } from '../lib/ssm-stack';
-//import { Ec2Stack } from '../lib/ec2-stack';
+//import { VpcStack } from '../lib/vpc-stack';
 import { LambdaStack } from '../lib/lambda/lambda-stack';
 import { StepFunctionsStack } from '../lib/stepfunctions-stack';
 
@@ -17,7 +14,6 @@ const env = {
   region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION
 }
 
-new AwsCdkTemplateStack(app, 'AwsCdkTemplateStack', {});
 /*
 const vpc_stack = new VpcStack(app, prj_name+'-VpcStack', {
   prj_name: prj_name,
@@ -34,18 +30,3 @@ const stepfunctions_stack = new StepFunctionsStack(app, prj_name+'-StepFunctions
   env: env,
   lambda: lambda_stack.lambda,
 });
-
-/*
-const ssm_stack = new SsmStack(app, prj_name+'-SsmStack', {
-  prj_name: prj_name,
-  env: env,
-  vpc: vpc_stack.vpc,
-});
-
-const ec2_stack = new Ec2Stack(app, prj_name+'-Ec2Stack', {
-  prj_name: prj_name,
-  env: env,
-  vpc: vpc_stack.vpc,
-  ssm_iam_role: ssm_stack.iam_role,
-});
-*/
