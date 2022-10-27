@@ -6,6 +6,7 @@ import { VpcStack } from '../lib/vpc-stack';
 //import { SsmStack } from '../lib/ssm-stack';
 //import { Ec2Stack } from '../lib/ec2-stack';
 import { LambdaStack } from '../lib/lambda/lambda-stack';
+import { StepFunctionsStack } from '../lib/stepfunctions-stack';
 
 
 const app = new cdk.App();
@@ -26,6 +27,12 @@ const vpc_stack = new VpcStack(app, prj_name+'-VpcStack', {
 const lambda_stack = new LambdaStack(app, prj_name+'-LambdaStack', {
   prj_name: prj_name,
   env: env,
+});
+
+const stepfunctions_stack = new StepFunctionsStack(app, prj_name+'-StepFunctionsStack', {
+  prj_name: prj_name,
+  env: env,
+  lambda: lambda_stack.lambda,
 });
 
 /*
